@@ -400,34 +400,42 @@
             totalPriceSpan.innerText = price * count;
         }
 
-        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+                document.getElementById('bookingForm').addEventListener('submit', function(e) {
             e.preventDefault();
-
+        
+            // تجهيز البيانات بالصيغة اللي مستنياها الـ API بتاعت SheetDB
             const formData = {
-                name: document.getElementById('name').value,
-                phone: document.getElementById('phone').value,
-                trip: document.getElementById('trip').value,
-                date: document.getElementById('date').value,
-                count: document.getElementById('count').value,
-                notes: document.getElementById('notes').value,
-                total_price: document.getElementById('totalPrice').innerText
+                data: [{
+                    name: document.getElementById('name').value,
+                    phone: document.getElementById('phone').value,
+                    trip: document.getElementById('trip').options[document.getElementById('trip').selectedIndex].text,
+                    date: document.getElementById('date').value,
+                    count: document.getElementById('count').value,
+                    price: document.getElementById('totalPrice').innerText,
+                    notes: document.getElementById('notes').value || 'لا يوجد',
+                    time: new Date().toLocaleString('ar-EG')
+                }]
             };
-
-            // تم تعديل المسار هنا ليتوافق تماماً مع الباكيند
-            fetch('/api/book', {
+        
+            // الإرسال المباشر لـ SheetDB بدون الحاجة لسيرفر في النص
+            fetch('https://sheetdb.io/api/v1/yqo0ljamkdk3n', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
             })
             .then(res => res.json())
             .then(data => {
-                if(data.success) {
-                    alert(data.message);
+                if(data.created === 1) {
+                    alert('تم تسجيل حجزك بنجاح ونزل في جوجل شيت! 🚀');
                     document.getElementById('bookingForm').reset();
                     document.getElementById('totalPrice').innerText = '0';
                 } else {
                     alert('حدثت مشكلة في الحجز، حاول مجدداً.');
                 }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('حدث خطأ في الاتصال.');
             });
         });
     </script>
