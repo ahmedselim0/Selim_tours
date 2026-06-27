@@ -400,15 +400,27 @@
             totalPriceSpan.innerText = price * count;
         }
 
-                document.getElementById('bookingForm').addEventListener('submit', function(e) {
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
             e.preventDefault();
         
+            // تحويل الاختصارات لأسماء باللغة العربية واضحة لجوجل شيت
+            const tripNamesMapping = {
+                'orange': 'جزيرة أورانج باي 🌊',
+                'hola': 'شاطئ هولا هولا 🏝️',
+                'safari': 'سفاري البيتش باجي 🏜️',
+                'pyramids': 'القاهرة والأهرامات 🏛️',
+                'luxor': 'الأقصر ومعبد الكرنك 👑'
+            };
+            
+            const selectedTrip = document.getElementById('trip').value;
+            const tripArabicName = tripNamesMapping[selectedTrip] || selectedTrip;
+
             // تجهيز البيانات بالصيغة اللي مستنياها الـ API بتاعت SheetDB
             const formData = {
                 data: [{
                     name: document.getElementById('name').value,
                     phone: document.getElementById('phone').value,
-                    trip: document.getElementById('trip').options[document.getElementById('trip').selectedIndex].text,
+                    trip: tripArabicName,
                     date: document.getElementById('date').value,
                     count: document.getElementById('count').value,
                     price: document.getElementById('totalPrice').innerText,
