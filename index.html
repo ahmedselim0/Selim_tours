@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شركة شراع تورز للسياحة</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --dark-color: #2f2f2f;
+            --light-color: #f7f9fa;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            padding-top: 70px;
+        }
+
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1539650116574-8efeb43e2750?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #ff4747;
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .card-desc {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-weight: bold;
+            color: var(--secondary-color);
+            font-size: 18px;
+        }
+
+        .booking-section {
+            background-color: #fff;
+            padding: 60px 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .contact-info p {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .hero h1 { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">شراع تورز 🌊</div>
+            <nav>
+                <ul>
+                    <li><a href="#hero">الرئيسية</a></li>
+                    <li><a href="#sea-trips">رحلات البحر</a></li>
+                    <li><a href="#safari-trips">سفاري</a></li>
+                    <li><a href="#cultural-trips">القاهرة والأقصر</a></li>
+                    <li><a href="#book">احجز الآن</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="hero">
+        <h1>اكتشف سحر مصر معنا ✨</h1>
+        <p>رحلات بحرية، مغامرات سفاري، وجولات ثقافية لا تُنسى بأفضل الأسعار</p>
+        <a href="#book" class="btn">احجز رحلتك الآن</a>
+    </section>
+
+    <section class="section" id="sea-trips">
+        <h2 class="section-title">الرحلات البحرية 🏝️</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80');"></div>
+                <div class="card-content">
+                    <h3 class="card-title">جزيرة أورانج باي (الغردقة)</h3>
+                    <p class="card-desc">استمتع بيوم ساحر على رمال الجزيرة البيضاء شامل الغداء والمشروبات ومعدات السنوركلينج.</p>
+                    <div class="card-footer">
+                        <span class="price">550 ج.م</span>
+                        <a href="#book" class="btn" style="padding: 5px 15px; font-size: 14px;">اختيار</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=500&q=80');"></div>
+                <div class="card-content">
+                    <h3 class="card-title">شاطئ هولا هولا (جزر الجفتون)</h3>
+                    <p class="card-desc">أجواء استوائية ممتعة، ألعاب مائية، ووقفتين سنوركلينج مع غداء بوفيه مفتوح.</p>
+                    <div class="card-footer">
+                        <span class="price">600 ج.م</span>
+                        <a href="#book" class="btn" style="padding: 5px 15px; font-size: 14px;">اختيار</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="safari-trips">
+        <h2 class="section-title">مغامرات السفاري 🏜️</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=500&q=80');"></div>
+                <div class="card-content">
+                    <h3 class="card-title">سفاري البيتش باجي وعشاء بدوي</h3>
+                    <p class="card-desc">انطلق في قلب الصحراء بالبيتش باجي، واستمتع بركوب الجمال وعشاء بدوي مشوي مع العروض.</p>
+                    <div class="card-footer">
+                        <span class="price">400 ج.م</span>
+                        <a href="#book" class="btn" style="padding: 5px 15px; font-size: 14px;">اختيار</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="cultural-trips">
+        <h2 class="section-title">رحلات القاهرة والأقصر التاريخية 🏛️</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=500&q=80');"></div>
+                <div class="card-content">
+                    <h3 class="card-title">رحلة القاهرة والأهرامات</h3>
+                    <p class="card-desc">زيارة أهرامات الجيزة، أبو الهول، المتحف المصري جولة في خان الخليلي شاملة الغداء والتنقلات.</p>
+                    <div class="card-footer">
+                        <span class="price">800 ج.م</span>
+                        <a href="#book" class="btn" style="padding: 5px 15px; font-size: 14px;">اختيار</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1600577916048-804c9191e36c?auto=format&fit=crop&w=500&q=80');"></div>
+                <div class="card-content">
+                    <h3 class="card-title">رحلة الأقصر (معبد الكرنك ووادي الملوك)</h3>
+                    <p class="card-desc">اكتشف عاصمة التاريخ؛ زيارة معبد الكرنك، حتشبسوت، ووادي الملوك مع مرشد سياحي.</p>
+                    <div class="card-footer">
+                        <span class="price">950 ج.م</span>
+                        <a href="#book" class="btn" style="padding: 5px 15px; font-size: 14px;">اختيار</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section booking-section" id="book">
+        <div class="form-container">
+            <h2 class="section-title">سجل بياناتك للحجز 📝</h2>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label for="name">الاسم بالكامل:</label>
+                    <input type="text" id="name" required placeholder="أدخل اسمك الثلاثي">
+                </div>
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف (واتساب):</label>
+                    <input type="tel" id="phone" required placeholder="مثال: 01xxxxxxxxx">
+                </div>
+                <div class="form-group">
+                    <label for="trip">اختر الرحلة:</label>
+                    <select id="trip" required onchange="calculatePrice()">
+                        <option value="" data-price="0">-- اختر من القائمة --</option>
+                        <option value="orange" data-price="550">جزيرة أورانج باي (550 ج.م)</option>
+                        <option value="hola" data-price="600">شاطئ هولا هولا (600 ج.م)</option>
+                        <option value="safari" data-price="400">سفاري البيتش باجي (400 ج.م)</option>
+                        <option value="pyramids" data-price="800">القاهرة والأهرامات (800 ج.م)</option>
+                        <option value="luxor" data-price="950">الأقصر ومعبد الكرنك (950 ج.م)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">تاريخ الرحلة:</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="count">عدد الأفراد:</label>
+                    <input type="number" id="count" min="1" value="1" required oninput="calculatePrice()">
+                </div>
+                <div class="form-group">
+                    <label for="notes">ملاحظات إضافية:</label>
+                    <textarea id="notes" rows="3" placeholder="أي تفاصيل أخرى..."></textarea>
+                </div>
+                
+                <div style="margin: 15px 0; font-weight: bold; color: var(--secondary-color); font-size: 18px;">
+                    إجمالي السعر المتوقع: <span id="totalPrice">0</span> ج.م
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%; border-radius: 8px;">تأكيد طلب الحجز</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="contact-info">
+            <h2>تواصل معنا مباشرة 📞</h2>
+            <p>📍 المقر الرئيسي: الغردقة، البحر الأحمر، مصر</p>
+            <p>📱 رقم الفون / واتساب: <strong>01000000000</strong></p>
+        </div>
+        <br>
+        <p style="font-size: 12px; color: #aaa;">&copy; 2026 جميع الحقوق محفوظة لشركتك السياحية.</p>
+    </footer>
+
+    <script>
+        function calculatePrice() {
+            const tripSelect = document.getElementById('trip');
+            const countInput = document.getElementById('count');
+            const totalPriceSpan = document.getElementById('totalPrice');
+
+            const price = tripSelect.options[tripSelect.selectedIndex].getAttribute('data-price') || 0;
+            const count = countInput.value || 1;
+
+            totalPriceSpan.innerText = price * count;
+        }
+
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                trip: document.getElementById('trip').value,
+                date: document.getElementById('date').value,
+                count: document.getElementById('count').value,
+                notes: document.getElementById('notes').value,
+                total_price: document.getElementById('totalPrice').innerText
+            };
+
+            // تم تعديل المسار هنا ليتوافق تماماً مع الباكيند
+            fetch('/api/book', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.success) {
+                    alert(data.message);
+                    document.getElementById('bookingForm').reset();
+                    document.getElementById('totalPrice').innerText = '0';
+                } else {
+                    alert('حدثت مشكلة في الحجز، حاول مجدداً.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
